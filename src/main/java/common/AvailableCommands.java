@@ -1,8 +1,5 @@
 package common;
 
-import server.interfaces.Described;
-import server.interfaces.Title;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +9,7 @@ import java.util.regex.Pattern;
  * It is necessary to include here a new constant and its relevant data when adding
  * a new instruction to execute to this program.
  */
-public enum AvailableCommands implements Described, Title {
+public enum AvailableCommands {
     HELP("help", "", "вывести справку по доступным командам"),
     INFO("info", "", "вывести в стандартный поток вывода информацию о коллекции" +
             " (тип, дата инициализации, количество элементов и т.д.)"),

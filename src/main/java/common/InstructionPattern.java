@@ -1,16 +1,13 @@
 package common;
 
-import client.ClientDataLoader;
-import client.RecursiveScriptReader;
 import common.basic.MusicBand;
 import common.basic.Person;
-import common.exceptions.InvalidDataFromFileException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class InstructionPattern extends ClientDataLoader implements Serializable {
+public class InstructionPattern implements Serializable {
 
     private final String argumentTitle;
     private final String titleRegex;
@@ -31,24 +28,26 @@ public class InstructionPattern extends ClientDataLoader implements Serializable
         this.argumentTitle = command.getArgumentTitle();
     }
 
-    public void chooseAndLoadArguments() throws InvalidDataFromFileException {
-        switch (argumentTitle) {
-            case ("MusicBand"):
-                this.musicBand = super.loadObjectFromData();
-                break;
-            case ("FrontMan"):
-                this.frontMan = loadFrontMan();
-                break;
-            case ("Script"):
-                RecursiveScriptReader scriptReader = new RecursiveScriptReader(operand);
-                scriptReader.installScriptData();
-                this.infoData = scriptReader.getInfoData();
-                this.mistakesInfo = scriptReader.getMistakesInfo();
-                this.commandsAndData = scriptReader.getCommandsAndData();
-            default:
-                break;
-        }
+    public void setCommandsAndData(String commandsAndData) {
+        this.commandsAndData = commandsAndData;
     }
+
+    public void setMistakesInfo(LinkedHashMap<String,String> mistakesInfo) {
+        this.mistakesInfo = mistakesInfo;
+    }
+
+    public void setInfoData(ArrayList<String> infoData) {
+        this.infoData = infoData;
+    }
+
+    public void setFrontMan(Person frontMan) {
+        this.frontMan = frontMan;
+    }
+
+    public void setMusicBand(MusicBand band) {
+        this.musicBand = band;
+    }
+
 
     public void setInstructionType(String type) {
         this.instructionType = type;
@@ -96,19 +95,6 @@ public class InstructionPattern extends ClientDataLoader implements Serializable
 
     public LinkedHashMap<String, String> getMistakesInfo() {
         return this.mistakesInfo;
-    }
-
-    @Override
-    protected String loadFrontManPassportID() {
-        System.out.println("Введите уникальный номер паспорта фронтмена группы.");
-        System.out.println("Если он неизвестен - пропустите.");
-        String frontManPassportId = scanner1.nextLine();
-        if (frontManPassportId.equals("")) return null;
-        while ((frontManPassportId.length() > 29)) {
-            System.out.println("Длинна строки не должна превышать 29 символов, введите ее правильно.");
-            frontManPassportId = scanner1.nextLine();
-        }
-        return frontManPassportId;
     }
 
 }

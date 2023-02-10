@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import static server.JaxbManager.*;
 
+@Deprecated
 public class Main {
 
     static Scanner commandScanner = new Scanner(System.in);

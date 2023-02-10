@@ -183,6 +183,14 @@ public abstract class ClientDataLoader {
         return new Person(frontManName, frontManHeight, frontManWeight, frontManBirthday, frontManPassportId);
     }
 
+    private Long generateId() {
+        long i = (long) (Math.random() * 100000 + 1);
+        while (ClientStatusRegister.uniqueIdList.contains(i)) {
+            i = (long) (Math.random() * 100000 + 1);
+        }
+        return i;
+    }
+
     /**
      * Loads a new valid {@link MusicBand} object form user's input
      * using data loading methods. Override these methods
@@ -196,7 +204,9 @@ public abstract class ClientDataLoader {
         long numberOfParticipants = loadNumberOfParticipants();
         MusicGenre musicGenre = loadBandMusicGenre();
         Person frontMan = loadFrontMan();
-        return new MusicBand(nameOfBand, bandCoordinates, numberOfParticipants,
+        MusicBand band = new MusicBand(nameOfBand, bandCoordinates, numberOfParticipants,
                 musicGenre, frontMan);
+        band.setId(generateId());
+        return band;
     }
 }

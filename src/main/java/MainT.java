@@ -1,35 +1,21 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import Kilent.ClientCommandManager;
-import Server.ServerCommandManager;
-import common.InstructionPattern;
-import common.AvailableCommands;
-import common.ResultPattern;
-import exceptions.InvalidDataFromFileException;
+import javax.swing.*;
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Date;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
 
-import java.io.*;
-
+@Deprecated
 public class MainT {
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InvalidDataFromFileException {
-        InstructionPattern pattern = new InstructionPattern(AvailableCommands.HELP);
-        pattern.chooseAndLoadArguments();
 
-        //soket
-        var out = new ObjectOutputStream(new FileOutputStream("file.txt"));
-        out.writeObject(pattern);
-
-        var in = new ObjectInputStream(new FileInputStream("file.txt"));
-        var obj = in.readObject();
-        if(obj.getClass() == pattern.getClass()) {
-            InstructionPattern ind = (InstructionPattern) obj;
-            System.out.println(ind.getInstructionType());
-        }
-        //ClientCommandManager commandManager = new ClientCommandManager("add");
-        //InstructionPattern pattern = commandManager.execution();
-        //отправить на сервер
-
-        //ResultPattern resultPattern = new ServerCommandManager(pattern).execution();
-        //обратно клиенту
-        //resultPattern.getReports().forEach(System.out::println);
+    public static void main(String[] args) throws JAXBException, IOException {
 
     }
 

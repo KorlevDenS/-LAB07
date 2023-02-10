@@ -8,7 +8,7 @@ import common.exceptions.InvalidDataFromFileException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ClientCommandManager implements CommandManagement<AvailableCommands, InstructionPattern, AvailableCommands> {
+public class ClientCommandManager extends ClientDataLoader implements CommandManagement<AvailableCommands, InstructionPattern, AvailableCommands> {
 
     private String instructionTitle;
 
@@ -40,7 +40,39 @@ public class ClientCommandManager implements CommandManagement<AvailableCommands
     public InstructionPattern execution(AvailableCommands command) throws InvalidDataFromFileException {
         InstructionPattern instructionPattern = new InstructionPattern(command, operandFetch());
         instructionPattern.setInstructionType(command.toString());
-        instructionPattern.chooseAndLoadArguments();
+        chooseAndLoadArguments(instructionPattern);
         return instructionPattern;
+    }
+
+    public void chooseAndLoadArguments(InstructionPattern pattern) throws InvalidDataFromFileException {
+        switch (pattern.getArgumentTitle()) {
+            case ("MusicBand"):
+                pattern.setMusicBand(super.loadObjectFromData());
+                break;
+            case ("FrontMan"):
+                pattern.setFrontMan(loadFrontMan());
+                break;
+            case ("Script"):
+                RecursiveScriptReader scriptReader = new RecursiveScriptReader(pattern.getOperand());
+                scriptReader.installScriptData();
+                pattern.setInfoData(scriptReader.getInfoData());
+                pattern.setMistakesInfo(scriptReader.getMistakesInfo());
+                pattern.setCommandsAndData(scriptReader.getCommandsAndData());
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected String loadFrontManPassportID() {
+        System.out.println("Введите уникальный номер паспорта фронтмена группы.");
+        System.out.println("Если он неизвестен - пропустите.");
+        String frontManPassportId = scanner1.nextLine();
+        if (frontManPassportId.equals("")) return null;
+        while ((frontManPassportId.length() > 29)) {
+            System.out.println("Длинна строки не должна превышать 29 символов, введите ее правильно.");
+            frontManPassportId = scanner1.nextLine();
+        }
+        return frontManPassportId;
     }
 }

@@ -1,14 +1,12 @@
 package common.basic;
 
-import server.interfaces.Described;
-
 import java.io.Serializable;
 
 /**
  * A set of {@code Enum} constants with names of available music genres.
  * It is used as a parameter to create MusicBand object.
  */
-public enum MusicGenre implements Described, Serializable {
+public enum MusicGenre implements Serializable {
 
     PSYCHEDELIC_ROCK("Psychedelic Rock"),
     PSYCHEDELIC_CLOUD_RAP("Psychedelic Cloud Rap"),

@@ -1,10 +1,10 @@
 package server.commands;
 
 import server.JaxbManager;
+import server.ScriptScanValidation;
 import server.ServerStatusRegister;
 import common.basic.*;
 import common.exceptions.InvalidDataFromFileException;
-import common.ScanValidation;
 
 import java.time.DateTimeException;
 
@@ -28,7 +28,7 @@ public class ScriptDataLoader {
      * @throws InvalidDataFromFileException if name is empty.
      */
     protected String loadBandName() throws InvalidDataFromFileException {
-        return ScanValidation.ReadNextNonEmptyLine();
+        return ScriptScanValidation.ReadNextNonEmptyLine();
     }
 
     /**
@@ -39,8 +39,8 @@ public class ScriptDataLoader {
      *                                      are not valid.
      */
     protected Coordinates loadBandCoordinates() throws InvalidDataFromFileException {
-        int coordinateX = ScanValidation.ReadNextInt();
-        double coordinateY = ScanValidation.ReadNextDouble();
+        int coordinateX = ScriptScanValidation.ReadNextInt();
+        double coordinateY = ScriptScanValidation.ReadNextDouble();
         if ((coordinateX > 381) || (coordinateY > 381)) {
             throw new InvalidDataFromFileException("Значения координат превышают 381.");
         }
@@ -55,7 +55,7 @@ public class ScriptDataLoader {
      *                                      in the script <= 0 or is invalid.
      */
     protected long loadNumberOfParticipants() throws InvalidDataFromFileException {
-        long numberOfParticipants = ScanValidation.ReadNextLong();
+        long numberOfParticipants = ScriptScanValidation.ReadNextLong();
         if (numberOfParticipants == 0) {
             throw new InvalidDataFromFileException("Количество участников должно быть больше нуля.");
         }
@@ -70,7 +70,7 @@ public class ScriptDataLoader {
      *                                      exist in {@link MusicGenre}.
      */
     protected MusicGenre loadBandMusicGenre() throws InvalidDataFromFileException {
-        return ScanValidation.ReadNextGenre();
+        return ScriptScanValidation.ReadNextGenre();
     }
 
     /**
@@ -80,7 +80,7 @@ public class ScriptDataLoader {
      * @throws InvalidDataFromFileException if name in the script is empty.
      */
     protected String loadFrontManName() throws InvalidDataFromFileException {
-        return ScanValidation.ReadNextNonEmptyLine();
+        return ScriptScanValidation.ReadNextNonEmptyLine();
     }
 
     /**
@@ -90,7 +90,7 @@ public class ScriptDataLoader {
      * @throws InvalidDataFromFileException if height in the script <= 0 or invalid.
      */
     protected long loadFrontManHeight() throws InvalidDataFromFileException {
-        long frontManHeight = ScanValidation.ReadNextLong();
+        long frontManHeight = ScriptScanValidation.ReadNextLong();
         if (frontManHeight <= 0) {
             throw new InvalidDataFromFileException("Рост фронтмена должен быть больше нуля.");
         }
@@ -104,7 +104,7 @@ public class ScriptDataLoader {
      * @throws InvalidDataFromFileException if weight in the script <= 0 or invalid.
      */
     protected int loadFrontManWeight() throws InvalidDataFromFileException {
-        int frontManWeight = ScanValidation.ReadNextInt();
+        int frontManWeight = ScriptScanValidation.ReadNextInt();
         if (frontManWeight <= 0) {
             throw new InvalidDataFromFileException("Вес фронтмена должен быть больше нуля.");
         }
@@ -174,6 +174,14 @@ public class ScriptDataLoader {
         return new Person(frontManName, frontManHeight, frontManWeight, frontManBirthday, frontManPassportId);
     }
 
+    private Long generateId() {
+        long i = (long) (Math.random() * 100000 + 1);
+        while (ServerStatusRegister.uniqueIdList.contains(i)) {
+            i = (long) (Math.random() * 100000 + 1);
+        }
+        return i;
+    }
+
     /**
      * Loads a new valid {@link MusicBand} object form script
      * using data loading methods.
@@ -193,13 +201,15 @@ public class ScriptDataLoader {
         musicGenre = loadBandMusicGenre();
         frontMan = loadFrontManFromData(true);
         if (!JaxbManager.readingXml) {
-            return new MusicBand(nameOfBand, bandCoordinates, numberOfParticipants,
+            MusicBand band = new MusicBand(nameOfBand, bandCoordinates, numberOfParticipants,
                     musicGenre, frontMan);
+            band.setId(generateId());
+            return band;
         } else {
             MusicBand xmlBand = new MusicBand(nameOfBand, bandCoordinates, numberOfParticipants,
                     musicGenre, frontMan);
-            xmlBand.setCreationDate(ScanValidation.ReadNextNonEmptyLine());
-            xmlBand.setId(ScanValidation.ReadNextLong());
+            xmlBand.setCreationDate(ScriptScanValidation.ReadNextNonEmptyLine());
+            xmlBand.setId(ScriptScanValidation.ReadNextLong());
             return xmlBand;
         }
     }

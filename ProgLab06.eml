@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_16" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<levels>
+		<level name="Maven: jpox:jpox-xmltypeoracle:1.1.9" value="project"/>
+		<level name="Maven: javax.activation:javax.activation-api:1.2.0" value="project"/>
+		<level name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.5" value="project"/>
+		<level name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" value="project"/>
+		<level name="Maven: org.glassfish.jaxb:txw2:2.3.5" value="project"/>
+		<level name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" value="project"/>
+		<level name="Maven: com.sun.activation:jakarta.activation:1.2.2" value="project"/>
+		<level name="Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359" value="project"/>
+		<level name="Maven: com.sun.xml.bind:jaxb-core:3.0.2" value="project"/>
+		<level name="Maven: com.sun.xml.bind:jaxb-impl:3.0.2" value="project"/>
+		<level name="Maven: ch.qos.logback:logback-core:1.2.11" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-api:1.7.36" value="project"/>
+		<level name="Maven: ch.qos.logback:logback-classic:1.2.11" value="project"/>
+	</levels>
+</component>

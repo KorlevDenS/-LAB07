@@ -1,7 +1,6 @@
 package common;
 
 import common.exceptions.InvalidDataFromFileException;
-import server.interfaces.Executable;
 
 /**
  * Interface {@code CommandManagement} requires implementing classes
@@ -22,7 +21,6 @@ public interface CommandManagement<T, U, S> {
     /**
      * Method is used to execute current instruction.
      * {@code execution} creates valid {@code Command} objects
-     * and use their {@link Executable#execute()}.
      * Method also passes parameters to {@code Command}  objects.
      *
      * @param command {@link AvailableCommands} object.

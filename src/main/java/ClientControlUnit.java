@@ -1,5 +1,7 @@
-package client;
-
+import client.ClientCommandManager;
+import client.ClientDataInstaller;
+import client.ClientStatusRegister;
+import client.Demonstrator;
 import common.CompleteMessage;
 import common.InstructionPattern;
 import common.TransportedData;
@@ -12,7 +14,6 @@ import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
-import java.util.Date;
 import java.util.Scanner;
 
 
@@ -26,14 +27,14 @@ public class ClientControlUnit {
     static CompleteMessage sendingMessage;
 
     public static void prepareData() throws IOException {
-        ClientStatusRegister.current = new Date();
-        //try {
-        //    ClientStatusRegister.currentXml = new File(System.getenv("COLLECTION_FILE"));
-        //} catch (NullPointerException e) {
-        //    System.out.println("Необходимая переменная окружения не задана. \n" +
-        //            "Задайте переменную COLLECTION_FILE при помощи команды export c необходимым файлом xml.");
-        //    System.exit(0);
-        //}
+        /*ClientStatusRegister.current = new Date();
+        try {
+            ClientStatusRegister.currentXml = new File(System.getenv("COLLECTION_FILE"));
+        } catch (NullPointerException e) {
+            System.out.println("Необходимая переменная окружения не задана. \n" +
+                    "Задайте переменную COLLECTION_FILE при помощи команды export c необходимым файлом xml.");
+            System.exit(0);
+        }*/
         ClientStatusRegister.currentXml = new File("src/main/resources/MusicBandCollections.xml");
         try {
             ClientStatusRegister.xmlData = Files.readAllBytes(ClientStatusRegister.currentXml.toPath());

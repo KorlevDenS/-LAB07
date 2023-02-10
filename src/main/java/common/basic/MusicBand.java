@@ -1,6 +1,5 @@
 package common.basic;
 
-import server.ServerStatusRegister;
 import common.exceptions.InvalidDataFromFileException;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -93,18 +92,13 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Generates unique {@link MusicBand#id} using {@link ServerStatusRegister#uniqueIdList}
+     * Generates unique {@link MusicBand#id}
      * not to repeat the id of already created music band.
      *
      * @return unique id of MusicBand.
      */
     private Long generateId() {
-        Long i = (long) (Math.random() * 100000 + 1);
-        while (ServerStatusRegister.uniqueIdList.contains(i)) {
-            i = (long) (Math.random() * 100000 + 1);
-        }
-
-        return i;
+        return (Long) (long) (Math.random() * 100000 + 1);
     }
 
     /**

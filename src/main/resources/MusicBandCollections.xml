@@ -1,41 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SERVER_STATUS_REGISTER>
-    <CollectionKeeper>
-        <MusicBand>
-            <id>21637</id>
-            <name>Group2</name>
-            <numberOfParticipants>5</numberOfParticipants>
-            <frontMan>
-                <birthday>1980-12-02T03:04:05.000000010+03:00[Europe/Moscow]</birthday>
-                <height>195</height>
-                <name>Bob</name>
-                <passportID>DR12311111f</passportID>
-                <weight>94</weight>
-            </frontMan>
-            <genre>BRIT_POP</genre>
-            <coordinates>
-                <x>222</x>
-                <y>20.0</y>
-            </coordinates>
-            <creationDate>1980-07-28</creationDate>
-        </MusicBand>
-        <MusicBand>
-            <id>80370</id>
-            <name>Group1</name>
-            <numberOfParticipants>3</numberOfParticipants>
-            <frontMan>
-                <birthday>1999-12-02T03:04:05.000000010+03:00[Europe/Moscow]</birthday>
-                <height>186</height>
-                <name>Billy</name>
-                <passportID>QW1234556h123563</passportID>
-                <weight>90</weight>
-            </frontMan>
-            <genre>BRIT_POP</genre>
-            <coordinates>
-                <x>234</x>
-                <y>200.0</y>
-            </coordinates>
-            <creationDate>1972-07-11</creationDate>
-        </MusicBand>
-    </CollectionKeeper>
+    <CollectionKeeper/>
 </SERVER_STATUS_REGISTER>

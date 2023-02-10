@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: jpox:jpox-xmltypeoracle:1.1.9"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: javax.activation:javax.activation-api:1.2.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.glassfish.jaxb:jaxb-runtime:2.3.5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.glassfish.jaxb:txw2:2.3.5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.sun.istack:istack-commons-runtime:3.0.12"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.sun.activation:jakarta.activation:1.2.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.sun.xml.bind:jaxb-core:3.0.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.sun.xml.bind:jaxb-impl:3.0.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: ch.qos.logback:logback-core:1.2.11"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.slf4j:slf4j-api:1.7.36"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: ch.qos.logback:logback-classic:1.2.11"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
